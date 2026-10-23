@@ -37,6 +37,56 @@
                               linear-gradient(90deg, rgba(0, 210, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
         }
+        /* Aviation Moving Background Styling */
+.aviation-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Allows clicking through to content */
+    z-index: 0;
+    overflow: hidden;
+}
+
+.flight-path-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.flight-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Moving Aircraft Element */
+.moving-plane {
+    position: absolute;
+    color: var(--accent-blue);
+    font-size: 1.5rem;
+    filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.8));
+    offset-path: path("M -100 500 Q 300 100, 700 350 T 1300 50");
+    animation: flyAcross 18s linear infinite;
+}
+
+/* CSS Motion Path Animation */
+@keyframes flyAcross {
+    0% {
+        offset-distance: 0%;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        offset-distance: 100%;
+        opacity: 0;
+    }
+}
 
         header {
             position: fixed;
@@ -363,7 +413,20 @@
     </style>
 </head>
 <body>
-
+<!-- Animated Aviation Flight Background Overlay -->
+<div class="aviation-bg-overlay">
+    <div class="flight-path-container">
+        <svg class="flight-svg" viewBox="0 0 1200 600" preserveAspectRatio="none">
+            <!-- Curved Flight Radar Path Line -->
+            <path id="flightPath" d="M -100 500 Q 300 100, 700 350 T 1300 50" fill="none" stroke="rgba(0, 210, 255, 0.15)" stroke-width="2" stroke-dasharray="8 6" />
+        </svg>
+        
+        <!-- Moving Aircraft Icon -->
+        <div class="moving-plane">
+            <i class="fa-solid fa-plane"></i>
+        </div>
+    </div>
+</div>
     <!-- Header / Navigation -->
     <header>
         <div class="logo">AERO.AI_SDET</div>
