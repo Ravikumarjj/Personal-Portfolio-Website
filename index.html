@@ -163,17 +163,23 @@
             width: 320px;
             height: 320px;
             border-radius: 50%;
-            border: 2px dashed var(--accent-blue);
+            border: 2px solid var(--accent-blue);
             padding: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            animation: rotateRadar 20s linear infinite;
+            box-shadow: 0 10px 25px rgba(0, 210, 255, 0.2);
+            animation: floatEffect 4s ease-in-out infinite;
         }
 
-        @keyframes rotateRadar {
-            100% { transform: rotate(360deg); }
+        @keyframes floatEffect {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
         .profile-img {
